@@ -1,31 +1,16 @@
-<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Your Code</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-   <style>
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: black;
-            color: white;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
     body {
         font-family: Arial, sans-serif;
         text-align: center;
@@ -39,20 +24,10 @@
         overflow: hidden;
     }
 
-        #inputContainer {
-            margin-bottom: 20px;
-        }
     #inputContainer {
         margin-bottom: 20px;
     }
 
-        input {
-            padding: 10px;
-            font-size: 18px;
-            width: 80%;
-            max-width: 300px;
-            text-align: center;
-        }
     input {
         padding: 10px;
         font-size: 18px;
@@ -61,12 +36,6 @@
         text-align: center;
     }
 
-        button {
-            padding: 10px 15px;
-            font-size: 18px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
     button {
         padding: 10px 15px;
         font-size: 18px;
@@ -74,46 +43,82 @@
         cursor: pointer;
     }
 
-        #imageContainer {
-            display: none;
-            width: 100vw;
-            height: 100vh;
-            overflow-y: scroll;
-            padding: 20px 0;
-        }
     #imageContainer {
-        display: none;
-        width: 100vw;
-        height: 100vh;
-        overflow-y: scroll;
-        padding: 20px 0;
-    }
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto; 
+    padding: 20px 0;
+}
 
-        .image-wrapper {
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-    .image-wrapper {
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
+.image-wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-        img {
-            width: 100%;
-            max-width: 100vw;
-            height: auto;
-        }
-    </style>
-    img {
-        width: 100vw;
-        height: auto;
-        max-height: 100vh;
-        object-fit: contain; 
+img {
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    object-fit: contain; 
+}
+
     }
 </style>
 </head>
 <body>
+
+    <div id="inputContainer">
+        <h2>Enter Your Invitation Code</h2>
+        <input type="text" id="inviteCode" placeholder="Enter Code">
+        <button onclick="checkCode()">Submit</button>
+    </div>
+
+    <div id="imageContainer">
+        <div class="image-wrapper">
+            <img id="image1" src="" alt="Invitation Image 1">
+        </div>
+        <div class="image-wrapper">
+            <img id="image2" src="" alt="Invitation Image 2">
+        </div>
+    </div>
+<script>
+  function checkCode() {
+    const codes = {
+        "9A26312": [
+            "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07.jpeg",
+            "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07%20(1).jpeg"
+        ],
+        "9I26374": [
+            "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
+            "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
+        ]
+    };
+
+    const userCode = document.getElementById("inviteCode").value;
+    const inputContainer = document.getElementById("inputContainer");
+    const imageContainer = document.getElementById("imageContainer");
+    const image1 = document.getElementById("image1");
+    const image2 = document.getElementById("image2");
+
+    if (codes[userCode]) {
+        image1.src = codes[userCode][0];
+        image2.src = codes[userCode][1];
+
+        // Ensure images are fully loaded before displaying
+        image1.onload = image2.onload = function () {
+            inputContainer.style.display = "none";
+            imageContainer.style.display = "block";
+        };
+
+    } else {
+        alert("Invalid Code. Try Again.");
+    }
+}
+</script>
+
+</body>
+</html>
