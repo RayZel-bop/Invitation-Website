@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter Your Code</title>
+    <title>Enter Your Invitation Code</title>
     <style>
         * {
             margin: 0;
@@ -12,29 +12,29 @@
             font-family: 'Arial', sans-serif;
         }
 
+        /* Initial page: Graduation background, white modern theme */
         body {
             text-align: center;
-            background-color: #121212;
-            color: white;
+            background: url('uploaded-background.jpg') no-repeat center center/cover;
+            color: black;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            transition: background 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
         }
 
-        /* Container for input and button */
+        /* Code entry box */
         #inputContainer {
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         input {
@@ -42,15 +42,15 @@
             font-size: 18px;
             width: 220px;
             text-align: center;
-            border: none;
+            border: 2px solid #444;
             border-radius: 8px;
             outline: none;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            background: rgba(255, 255, 255, 0.6);
+            color: black;
         }
 
         input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(0, 0, 0, 0.5);
         }
 
         .enter-button {
@@ -67,21 +67,29 @@
         .enter-button svg {
             width: 40px;
             height: 40px;
-            fill: white;
+            fill: black;
         }
 
-        /* Image container for displaying images */
+        /* Submission page (After entering code) */
         #imageContainer {
             display: none;
             width: 100vw;
             height: 100vh;
             overflow-y: auto;
-            padding: 20px 0;
-            background: url('uploaded-background.jpg') no-repeat center center/cover;
+            padding: 30px;
+            background: linear-gradient(120deg, #222, #444);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .invitation-heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
         .image-wrapper {
-            width: 100vw;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -94,7 +102,12 @@
             height: auto;
             object-fit: contain;
             border-radius: 8px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.05);
         }
 
         /* Adjustments for Mobile */
@@ -117,7 +130,7 @@
 <body>
 
     <div id="inputContainer">
-        <input type="text" id="inviteCode" placeholder="Enter Code">
+        <input type="text" id="inviteCode" placeholder="Enter Invitation Code">
         <button class="enter-button" onclick="checkCode()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M3 12l8-8v6h8v4h-8v6z"/>
@@ -126,6 +139,7 @@
     </div>
 
     <div id="imageContainer">
+        <h2 class="invitation-heading">Congratulations! Here’s Your Invitation:</h2>
         <div class="image-wrapper">
             <img id="image1" src="" alt="Invitation Image 1">
         </div>
@@ -167,8 +181,9 @@
                     inputContainer.style.display = "none";
                     imageContainer.style.display = "block";
 
-                    // Change the background after submitting the code
-                    document.body.style.background = url('uploaded-background.jpg') no-repeat center center/cover;
+                    // Change theme after submission
+                    document.body.style.background = "linear-gradient(120deg, #222, #444)";
+                    document.body.style.color = "white";
                 };
             } else {
                 alert("Invalid Code. Try Again.");
