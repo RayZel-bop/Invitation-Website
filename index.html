@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter Your Code</title>
-   <style>
+<style>
     * {
         margin: 0;
         padding: 0;
@@ -26,21 +20,43 @@
 
     #inputContainer {
         margin-bottom: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
     }
 
     input {
-        padding: 10px;
+        padding: 12px;
         font-size: 18px;
         width: 80%;
         max-width: 300px;
         text-align: center;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
     }
 
     button {
-        padding: 10px 15px;
+        padding: 12px 15px;
         font-size: 18px;
         margin-top: 10px;
         cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        background: #4CAF50;
+        color: white;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #45a049;
     }
 
     #imageContainer {
@@ -62,60 +78,49 @@
         width: 100vw;
         height: auto;
         max-height: 100vh;
-        object-fit: contain; 
+        object-fit: contain;
     }
 </style>
-</head>
-<body>
 
-    <div id="inputContainer">
-        <h2>Enter Your Invitation Code</h2>
-        <input type="text" id="inviteCode" placeholder="Enter Code">
-        <button onclick="checkCode()">Submit</button>
-    </div>
+<script>
+    function checkCode() {
+        const codes = {
+            "9A26312": [
+                "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07.jpeg",
+                "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07%20(1).jpeg"
+            ],
+            "9I26374": [
+                "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
+                "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
+            ]
+        };
 
-    <div id="imageContainer">
-        <div class="image-wrapper">
-            <img id="image1" src="" alt="Invitation Image 1">
-        </div>
-        <div class="image-wrapper">
-            <img id="image2" src="" alt="Invitation Image 2">
-        </div>
-    </div>
+        const userCode = document.getElementById("inviteCode").value;
+        const inputContainer = document.getElementById("inputContainer");
+        const imageContainer = document.getElementById("imageContainer");
+        const image1 = document.getElementById("image1");
+        const image2 = document.getElementById("image2");
 
-    <script>
-        function checkCode() {
-            const codes = {
-                "9A26312": [
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07.jpeg",
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07%20(1).jpeg"
-                ],
-                "9I26374": [
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
-                ]
-            };
+        if (codes[userCode]) {
+            image1.src = codes[userCode][0];
+            image2.src = codes[userCode][1];
 
-            const userCode = document.getElementById("inviteCode").value;
-            const inputContainer = document.getElementById("inputContainer");
-            const imageContainer = document.getElementById("imageContainer");
-            const image1 = document.getElementById("image1");
-            const image2 = document.getElementById("image2");
-
-            if (codes[userCode]) {
-                image1.src = codes[userCode][0];
-                image2.src = codes[userCode][1];
-
-                // Hide input box after submitting the code
-                inputContainer.style.display = "none";
-                
-                // Show full-width images with spacing
-                imageContainer.style.display = "block";
-            } else {
-                alert("Invalid Code. Try Again.");
-            }
+            // Hide input box after submitting the code
+            inputContainer.style.display = "none";
+            
+            // Show full-width images with spacing
+            imageContainer.style.display = "block";
+        } else {
+            alert("Invalid Code. Try Again.");
         }
-    </script>
+    }
 
-</body>
-</html>
+    // Allow pressing "Enter" to submit
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("inviteCode").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkCode();
+            }
+        });
+    });
+</script>
