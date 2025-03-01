@@ -15,7 +15,7 @@
         /* Initial page: Graduation background, white modern theme */
         body {
             text-align: center;
-            background: url('uploaded-background.jpg') no-repeat center center/cover;
+            background: url('https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/uploaded-background.jpeg') no-repeat center center/cover;
             color: black;
             height: 100vh;
             display: flex;
@@ -182,8 +182,8 @@
                     imageContainer.style.display = "block";
 
                     // Change theme after submission
-                    document.body.style.background = "linear-gradient(120deg, #222, #444)";
-                    document.body.style.color = "white";
+                    document.body.style.background = "none"; // Removes previous background
+document.body.style.backgroundColor = "#222"; // Sets new color
                 };
             } else {
                 alert("Invalid Code. Try Again.");
