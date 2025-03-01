@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Your Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Your Invitation Code</h2>
+    <input type="text" id="inviteCode" placeholder="Enter Code">
+    <button onclick="checkCode()">Submit</button>
+
+    <p id="message"></p>
+
+    <script>
+        function checkCode() {
+            const validCodes = ["ABC123", "XYZ789"]; // List of secret codes
+            const userCode = document.getElementById("inviteCode").value;
+            
+            if (validCodes.includes(userCode)) {
+                window.location.href = "invitation.html"; // If correct, go to invitation page
+            } else {
+                document.getElementById("message").innerText = "Invalid Code. Try Again.";
+            }
+        }
+    </script>
+
+</body>
+</html>
