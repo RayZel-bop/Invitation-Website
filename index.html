@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graduation Invitation</title>
+    <title>Enter Your Code</title>
     <style>
         * {
             margin: 0;
@@ -22,8 +22,10 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            transition: background 0.5s ease-in-out;
         }
 
+        /* Container for input and button */
         #inputContainer {
             display: flex;
             align-items: center;
@@ -38,7 +40,7 @@
         input {
             padding: 12px;
             font-size: 18px;
-            width: 250px;
+            width: 220px;
             text-align: center;
             border: none;
             border-radius: 8px;
@@ -68,13 +70,14 @@
             fill: white;
         }
 
+        /* Image container for displaying images */
         #imageContainer {
             display: none;
             width: 100vw;
             height: 100vh;
             overflow-y: auto;
             padding: 20px 0;
-            background: url('file-4FqKZjKxfJ4m3zyHLwZY5o') no-repeat center center/cover;
+            background: url('uploaded-background.jpg') no-repeat center center/cover;
         }
 
         .image-wrapper {
@@ -86,21 +89,27 @@
         }
 
         img {
-            width: 100%;
-            max-width: 100vw;
+            width: 90%;
+            max-width: 600px;
             height: auto;
             object-fit: contain;
             border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* Adjustments for Mobile */
         @media (max-width: 600px) {
             input {
-                width: 200px;
+                width: 180px;
             }
 
             .enter-button svg {
                 width: 35px;
                 height: 35px;
+            }
+
+            img {
+                width: 95%;
             }
         }
     </style>
@@ -157,6 +166,9 @@
                 image1.onload = image2.onload = function () {
                     inputContainer.style.display = "none";
                     imageContainer.style.display = "block";
+
+                    // Change the background after submitting the code
+                    document.body.style.background = url('uploaded-background.jpg') no-repeat center center/cover;
                 };
             } else {
                 alert("Invalid Code. Try Again.");
