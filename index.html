@@ -17,6 +17,10 @@
         button {
             padding: 10px;
         }
+        #imagePreview {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -26,21 +30,28 @@
     <button onclick="checkCode()">Submit</button>
 
     <p id="message"></p>
+    <img id="imagePreview" src="" alt="Invitation Image" width="300">
 
     <script>
         function checkCode() {
+            // List of valid codes and their corresponding images
             const codes = {
-                "9A26312": "page1.html",
-                "9I26374": "page2.html",
-            
+                "9A26312"-9X72KQ": "https://yourdomain.com/images/image1.jpg",
+                "9I26374": "https://yourdomain.com/images/image2.jpg",
+                
             };
 
             const userCode = document.getElementById("inviteCode").value;
-            
+            const imagePreview = document.getElementById("imagePreview");
+            const message = document.getElementById("message");
+
             if (codes[userCode]) {
-                window.location.href = codes[userCode]; // Redirect to the assigned page
+                imagePreview.src = codes[userCode];  // Set the correct image
+                imagePreview.style.display = "block"; // Show the image
+                message.innerText = "Here is your invitation!";
             } else {
-                document.getElementById("message").innerText = "Invalid Code. Try Again.";
+                message.innerText = "Invalid Code. Try Again.";
+                imagePreview.style.display = "none"; // Hide image if code is wrong
             }
         }
     </script>
