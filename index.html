@@ -5,36 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Your Code</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 100px;
+            background-color: black; /* Makes background black for better image contrast */
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
+
+        #inputContainer {
+            margin-bottom: 20px;
+        }
+
         input {
             padding: 10px;
-            margin: 10px;
+            font-size: 18px;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
         }
+
         button {
-            padding: 10px;
+            padding: 10px 15px;
+            font-size: 18px;
+            margin-top: 10px;
+            cursor: pointer;
         }
+
         #imageContainer {
             display: none;
-            margin-top: 20px;
+            width: 100vw;
+            height: 100vh;
+            overflow-y: scroll;
         }
+
         img {
-            width: 80%;
-            max-width: 600px;
-            margin-bottom: 20px;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* Makes the image fill the entire screen */
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <h2>Enter Your Invitation Code</h2>
-    <input type="text" id="inviteCode" placeholder="Enter Code">
-    <button onclick="checkCode()">Submit</button>
-
-    <p id="message"></p>
+    <div id="inputContainer">
+        <h2>Enter Your Invitation Code</h2>
+        <input type="text" id="inviteCode" placeholder="Enter Code">
+        <button onclick="checkCode()">Submit</button>
+    </div>
 
     <div id="imageContainer">
         <img id="image1" src="" alt="Invitation Image 1">
@@ -43,32 +73,34 @@
 
     <script>
         function checkCode() {
-            // List of valid codes and their corresponding images
             const codes = {
-                "9A26312": [
+                "INVITE-9X72KQ": [
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07.jpeg",
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07%20(1).jpeg"
                 ],
-                "9I26374": [
+                "ACCESS-5M3ZPT": [
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
                 ]
             };
 
             const userCode = document.getElementById("inviteCode").value;
+            const inputContainer = document.getElementById("inputContainer");
             const imageContainer = document.getElementById("imageContainer");
-            const message = document.getElementById("message");
             const image1 = document.getElementById("image1");
             const image2 = document.getElementById("image2");
 
             if (codes[userCode]) {
-                image1.src = codes[userCode][0]; // Set first image
-                image2.src = codes[userCode][1]; // Set second image
-                imageContainer.style.display = "block"; // Show images
-                message.innerText = "Here are your invitation images!";
+                image1.src = codes[userCode][0];
+                image2.src = codes[userCode][1];
+
+                // Hide input box after submitting the code
+                inputContainer.style.display = "none";
+                
+                // Show full-frame images
+                imageContainer.style.display = "block";
             } else {
-                message.innerText = "Invalid Code. Try Again.";
-                imageContainer.style.display = "none"; // Hide images if code is wrong
+                alert("Invalid Code. Try Again.");
             }
         }
     </script>
