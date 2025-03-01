@@ -29,11 +29,16 @@
 
     <script>
         function checkCode() {
-            const validCodes = ["ABC123", "XYZ789"]; // List of secret codes
+            const codes = {
+                "9A26312": "page1.html",
+                "9I26374": "page2.html",
+            
+            };
+
             const userCode = document.getElementById("inviteCode").value;
             
-            if (validCodes.includes(userCode)) {
-                window.location.href = "invitation.html"; // If correct, go to invitation page
+            if (codes[userCode]) {
+                window.location.href = codes[userCode]; // Redirect to the assigned page
             } else {
                 document.getElementById("message").innerText = "Invalid Code. Try Again.";
             }
