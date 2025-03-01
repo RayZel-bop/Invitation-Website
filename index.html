@@ -17,9 +17,14 @@
         button {
             padding: 10px;
         }
-        #imagePreview {
+        #imageContainer {
             display: none;
             margin-top: 20px;
+        }
+        img {
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -30,28 +35,40 @@
     <button onclick="checkCode()">Submit</button>
 
     <p id="message"></p>
-    <img id="imagePreview" src="" alt="Invitation Image" width="300">
+
+    <div id="imageContainer">
+        <img id="image1" src="" alt="Invitation Image 1">
+        <img id="image2" src="" alt="Invitation Image 2">
+    </div>
 
     <script>
         function checkCode() {
             // List of valid codes and their corresponding images
             const codes = {
-                "9A26312"-9X72KQ": "https://yourdomain.com/images/image1.jpg",
-                "9I26374": "https://yourdomain.com/images/image2.jpg",
-                
+                "9A26312": [
+                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07.jpeg",
+                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/WhatsApp%20Image%202025-03-01%20at%2016.15.07%20(1).jpeg"
+                ],
+                "9I26374": [
+                    "",
+                    ""
+                ]
             };
 
             const userCode = document.getElementById("inviteCode").value;
-            const imagePreview = document.getElementById("imagePreview");
+            const imageContainer = document.getElementById("imageContainer");
             const message = document.getElementById("message");
+            const image1 = document.getElementById("image1");
+            const image2 = document.getElementById("image2");
 
             if (codes[userCode]) {
-                imagePreview.src = codes[userCode];  // Set the correct image
-                imagePreview.style.display = "block"; // Show the image
-                message.innerText = "Here is your invitation!";
+                image1.src = codes[userCode][0]; // Set first image
+                image2.src = codes[userCode][1]; // Set second image
+                imageContainer.style.display = "block"; // Show images
+                message.innerText = "Here are your invitation images!";
             } else {
                 message.innerText = "Invalid Code. Try Again.";
-                imagePreview.style.display = "none"; // Hide image if code is wrong
+                imageContainer.style.display = "none"; // Hide images if code is wrong
             }
         }
     </script>
