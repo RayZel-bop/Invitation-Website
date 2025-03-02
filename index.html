@@ -29,10 +29,10 @@
             object-fit: cover;
         }
 
-        /* Transparent Input Box - Positioned at 41% from the Top */
+        /* Transparent Input Box - Positioned at 41.5% from the Top */
         #inputContainer {
             position: absolute;
-            top: 41%; /* Adjusted to 41% from the top */
+            top: 41.5%; /* Adjusted to 41.5% from the top */
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
@@ -40,7 +40,7 @@
             gap: 8px;
             padding: 8px 12px;
             background: rgba(0, 0, 0, 0); /* Fully Transparent */
-            border: 2px solid black; /* Black Border */
+            border: 2px solid black; /* Changed back to black */
             border-radius: 8px;
         }
 
@@ -180,7 +180,7 @@
                 ],
                 "9I26374": [
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at% 16.15.32%20(1).jpeg"
+                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
                 ]
             };
 
@@ -195,18 +195,26 @@
                 image1.src = codes[userCode][0];
                 image2.src = codes[userCode][1];
 
-                image1.onload = image2.onload = function () {
-                    inputContainer.style.display = "none";
-                    imageContainer.style.display = "block";
+                // Ensure both images load before displaying them
+                let imageLoaded = 0;
+                function checkAllImagesLoaded() {
+                    imageLoaded++;
+                    if (imageLoaded === 2) {
+                        inputContainer.style.display = "none";
+                        imageContainer.style.display = "block";
 
-                    // Stop the video and freeze last frame
-                    video.pause();
-                    video.currentTime = video.duration;
+                        // Stop the video and freeze last frame
+                        video.pause();
+                        video.currentTime = video.duration;
 
-                    // Change theme after submission
-                    document.body.style.background = "linear-gradient(120deg, #222, #444)";
-                    document.body.style.color = "white";
-                };
+                        // Change theme after submission
+                        document.body.style.background = "linear-gradient(120deg, #222, #444)";
+                        document.body.style.color = "white";
+                    }
+                }
+
+                image1.onload = checkAllImagesLoaded;
+                image2.onload = checkAllImagesLoaded;
             } else {
                 alert("Invalid Code. Try Again.");
             }
