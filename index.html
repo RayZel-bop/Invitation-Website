@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Your Invitation Code</title>
+
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -44,9 +48,10 @@
             border-radius: 6px;
         }
 
+        /* Font for "Enter Code" */
         input {
             padding: 6px;
-            font-size: 16px;
+            font-size: 18px;
             width: 170px;
             text-align: center;
             border: none;
@@ -54,11 +59,13 @@
             background: transparent;
             color: white;
             font-weight: bold;
+            font-family: 'Playfair Display', serif; /* Updated Font */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
         }
 
         input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Playfair Display', serif;
         }
 
         .enter-button {
@@ -132,6 +139,7 @@
             cursor: pointer;
             font-size: 16px;
             transition: background 0.3s ease-in-out;
+            font-family: 'Playfair Display', serif;
         }
 
         .back-button:hover {
@@ -166,7 +174,7 @@
 
     <!-- Code Input Box -->
     <div id="inputContainer">
-        <input type="text" id="inviteCode" placeholder="Enter code">
+        <input type="text" id="inviteCode" placeholder="Enter Code">
         <button class="enter-button" onclick="checkCode()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M3 12l8-8v6h8v4h-8v6z"/>
@@ -230,9 +238,6 @@
             if (localStorage.getItem("stayOnInvitation")) {
                 document.getElementById("image1").src = localStorage.getItem("image1");
                 document.getElementById("image2").src = localStorage.getItem("image2");
-                document.getElementById("inputContainer").style.display = "none";
-                document.getElementById("imageContainer").style.display = "block";
-                document.querySelector(".back-button").style.display = "block";
             }
         };
     </script>
