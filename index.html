@@ -12,29 +12,37 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* Initial page: Graduation background, white modern theme */
-        body {
-            text-align: center;
-            background: url('https://github.com/RayZel-bop/Invitation-Website/blob/main/uploaded-background.jpeg?raw=true') no-repeat center center/cover;
-            color: black;
+        /* Video Background */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+            overflow: hidden;
+            z-index: -1;
         }
 
-        /* Code entry box */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Code Entry Box - Positioned Over Brown Tape */
         #inputContainer {
+            position: absolute;
+            top: 75%; /* Adjusted to align with brown tape */
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 12px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         input {
@@ -70,7 +78,7 @@
             fill: black;
         }
 
-        /* Submission page (After entering code) */
+        /* Submission Page Styling */
         #imageContainer {
             display: none;
             width: 100vw;
@@ -79,7 +87,7 @@
             padding: 30px;
             background: linear-gradient(120deg, #222, #444);
             color: white;
-            border-radius: 10px;
+            text-align: center;
         }
 
         .invitation-heading {
@@ -129,6 +137,14 @@
 </head>
 <body>
 
+    <!-- Video Background -->
+    <div class="video-container">
+        <video id="backgroundVideo" autoplay muted playsinline>
+            <source src="https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/wisuda-video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Code Input Box -->
     <div id="inputContainer">
         <input type="text" id="inviteCode" placeholder="Enter Invitation Code">
         <button class="enter-button" onclick="checkCode()">
@@ -138,8 +154,9 @@
         </button>
     </div>
 
+    <!-- Submission Page -->
     <div id="imageContainer">
-        <h2 class="invitation-heading">Congratulations! Here’s Your Invitation:</h2>
+        <h2 class="invitation-heading">🎉 Congratulations! Here’s Your Invitation 🎓</h2>
         <div class="image-wrapper">
             <img id="image1" src="" alt="Invitation Image 1">
         </div>
@@ -164,14 +181,11 @@
                 "9I26374": [
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
-                ],
-                "9A26552": [
-                    "",
-                    ""
                 ]
             };
 
             const userCode = document.getElementById("inviteCode").value;
+            const video = document.getElementById("backgroundVideo");
             const inputContainer = document.getElementById("inputContainer");
             const imageContainer = document.getElementById("imageContainer");
             const image1 = document.getElementById("image1");
@@ -185,9 +199,13 @@
                     inputContainer.style.display = "none";
                     imageContainer.style.display = "block";
 
+                    // Stop the video and freeze last frame
+                    video.pause();
+                    video.currentTime = video.duration;
+
                     // Change theme after submission
-                    document.body.style.background = "none"; // Removes previous background
-document.body.style.backgroundColor = "#222"; // Sets new color
+                    document.body.style.background = "linear-gradient(120deg, #222, #444)";
+                    document.body.style.color = "white";
                 };
             } else {
                 alert("Invalid Code. Try Again.");
