@@ -88,10 +88,10 @@
             background: url('https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/Invitation%20Background.jpeg');
             background-size: 100% 100%; /* Ensures full-frame scaling */
             background-position: center;
-            background-repeat: no-repeat; /* Prevents tiling */
+            background-repeat: no-repeat;
             color: black;
             text-align: center;
-            border: 1.5px solid black; /* Thinner black border */
+            border: 1.5px solid black;
             border-radius: 10px;
         }
 
@@ -115,6 +115,27 @@
 
         img:hover {
             transform: scale(1.05);
+        }
+
+        /* Back to Home Button */
+        .back-button {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background: darkgray;
         }
 
         /* Adjustments for Mobile */
@@ -161,6 +182,7 @@
         <div class="image-wrapper">
             <img id="image2" src="" alt="Invitation Image 2">
         </div>
+        <button class="back-button" onclick="goBack()">Back to Home</button>
     </div>
 
     <script>
@@ -179,52 +201,36 @@
                 "9I26374": [
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
-                ],
-                 "9A26552": [
-                    "https://github.com/RayZel-bop/Invitation-Website/blob/main/1.jpg",
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
+                ]
             };
 
             const userCode = document.getElementById("inviteCode").value;
-            const video = document.getElementById("backgroundVideo");
-            const inputContainer = document.getElementById("inputContainer");
-            const imageContainer = document.getElementById("imageContainer");
-            const image1 = document.getElementById("image1");
-            const image2 = document.getElementById("image2");
-
             if (codes[userCode]) {
-                image1.src = codes[userCode][0];
-                image2.src = codes[userCode][1];
+                document.getElementById("image1").src = codes[userCode][0];
+                document.getElementById("image2").src = codes[userCode][1];
 
-                let imageLoaded = 0;
-                function checkAllImagesLoaded() {
-                    imageLoaded++;
-                    if (imageLoaded === 2) {
-                        inputContainer.style.display = "none";
-                        imageContainer.style.display = "block";
+                localStorage.setItem("stayOnInvitation", "true");
 
-                        // Stop the video and freeze last frame
-                        video.pause();
-                        video.currentTime = video.duration;
-
-                        // Change theme after submission
-                        document.body.style.background = "linear-gradient(120deg, #222, #444)";
-                        document.body.style.color = "white";
-                    }
-                }
-
-                image1.onload = checkAllImagesLoaded;
-                image2.onload = checkAllImagesLoaded;
+                document.getElementById("inputContainer").style.display = "none";
+                document.getElementById("imageContainer").style.display = "block";
+                document.querySelector(".back-button").style.display = "block";
             } else {
                 alert("Invalid Code. Try Again.");
             }
         }
 
-        function freezeVideo() {
-            const video = document.getElementById("backgroundVideo");
-            video.pause();
-            video.currentTime = video.duration;
+        function goBack() {
+            localStorage.removeItem("stayOnInvitation");
+            location.reload();
         }
+
+        window.onload = function () {
+            if (localStorage.getItem("stayOnInvitation")) {
+                document.getElementById("inputContainer").style.display = "none";
+                document.getElementById("imageContainer").style.display = "block";
+                document.querySelector(".back-button").style.display = "block";
+            }
+        };
     </script>
 
 </body>
