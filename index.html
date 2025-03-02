@@ -32,26 +32,26 @@
         /* Transparent Input Box - Positioned at 41.5% from the Top */
         #inputContainer {
             position: absolute;
-            top: 41.5%; /* Adjusted to 41.5% from the top */
+            top: 41.5%;
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             align-items: center;
             gap: 8px;
             padding: 6px 10px;
-            background: rgba(0, 0, 0, 0); /* Fully Transparent */
-            border: 1.5px solid black; /* Thin black border */
+            background: rgba(0, 0, 0, 0);
+            border: 1.5px solid black;
             border-radius: 6px;
         }
 
         input {
             padding: 6px;
             font-size: 16px;
-            width: 170px; /* Compact size */
+            width: 170px;
             text-align: center;
             border: none;
             outline: none;
-            background: transparent; /* Fully Transparent */
+            background: transparent;
             color: white;
             font-weight: bold;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
@@ -88,14 +88,10 @@
             background: url('https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/Invitation%20Background.jpeg');
             background-size: cover;
             background-position: center;
-            color: black; /* Adjust text color if needed */
+            color: black;
             text-align: center;
-        }
-
-        .invitation-heading {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            border: 1.5px solid black; /* Thinner black border */
+            border-radius: 10px;
         }
 
         .image-wrapper {
@@ -158,7 +154,6 @@
 
     <!-- Submission Page -->
     <div id="imageContainer">
-        <h2 class="invitation-heading">🎉 Congratulations! Here’s Your Invitation 🎓</h2>
         <div class="image-wrapper">
             <img id="image1" src="" alt="Invitation Image 1">
         </div>
