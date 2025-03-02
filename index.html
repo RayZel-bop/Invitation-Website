@@ -29,10 +29,10 @@
             object-fit: cover;
         }
 
-        /* Transparent Input Box */
+        /* Transparent Input Box - Positioned EXACTLY on Brown Tape */
         #inputContainer {
             position: absolute;
-            top: 82%; /* Adjusted to align perfectly with brown tape */
+            top: 74%; /* Adjusted higher to be on the brown tape */
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
@@ -42,7 +42,6 @@
             background: rgba(0, 0, 0, 0); /* Fully Transparent */
             border: 2px solid black; /* Black Border */
             border-radius: 10px;
-            box-shadow: none;
         }
 
         input {
@@ -147,7 +146,7 @@
 
     <!-- Code Input Box -->
     <div id="inputContainer">
-        <input type="text" id="inviteCode" placeholder="Enter Invitation Code">
+        <input type="text" id="inviteCode" placeholder="Enter code">
         <button class="enter-button" onclick="checkCode()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M3 12l8-8v6h8v4h-8v6z"/>
