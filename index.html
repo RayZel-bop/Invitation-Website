@@ -40,7 +40,7 @@
             gap: 8px;
             padding: 6px 10px;
             background: rgba(0, 0, 0, 0); /* Fully Transparent */
-            border: 1.5px solid black; /* Reduced border thickness */
+            border: 1.5px solid black; /* Thin black border */
             border-radius: 6px;
         }
 
@@ -78,15 +78,17 @@
             fill: white;
         }
 
-        /* Submission Page Styling */
+        /* Invitation Card Styling */
         #imageContainer {
             display: none;
             width: 100vw;
             height: 100vh;
             overflow-y: auto;
             padding: 30px;
-            background: linear-gradient(120deg, #222, #444);
-            color: white;
+            background: url('https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/Invitation%20Background.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: black; /* Adjust text color if needed */
             text-align: center;
         }
 
@@ -195,7 +197,6 @@
                 image1.src = codes[userCode][0];
                 image2.src = codes[userCode][1];
 
-                // Ensure both images load before displaying them
                 let imageLoaded = 0;
                 function checkAllImagesLoaded() {
                     imageLoaded++;
@@ -223,7 +224,7 @@
         function freezeVideo() {
             const video = document.getElementById("backgroundVideo");
             video.pause();
-            video.currentTime = video.duration; // Freeze on last frame
+            video.currentTime = video.duration;
         }
     </script>
 
