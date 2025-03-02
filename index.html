@@ -78,7 +78,7 @@
             fill: white;
         }
 
-        /* Invitation Card Styling */
+        /* Invitation Card Styling - Fixed Full-Frame Background */
         #imageContainer {
             display: none;
             width: 100vw;
@@ -86,8 +86,9 @@
             overflow-y: auto;
             padding: 30px;
             background: url('https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/Invitation%20Background.jpeg');
-            background-size: cover;
+            background-size: 100% 100%; /* Ensures full-frame scaling */
             background-position: center;
+            background-repeat: no-repeat; /* Prevents tiling */
             color: black;
             text-align: center;
             border: 1.5px solid black; /* Thinner black border */
