@@ -6,7 +6,7 @@
     <title>Enter Your Invitation Code</title>
 
     <!-- Import Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -48,24 +48,24 @@
             border-radius: 6px;
         }
 
-        /* Font for "Enter Code" */
+        /* New Font for "Enter Code" */
         input {
             padding: 6px;
-            font-size: 18px;
-            width: 170px;
+            font-size: 20px;
+            width: 180px;
             text-align: center;
             border: none;
             outline: none;
             background: transparent;
             color: white;
             font-weight: bold;
-            font-family: 'Playfair Display', serif; /* Updated Font */
+            font-family: 'Great Vibes', cursive; /* Updated Font */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
         }
 
         input::placeholder {
             color: rgba(255, 255, 255, 0.9);
-            font-family: 'Playfair Display', serif;
+            font-family: 'Great Vibes', cursive;
         }
 
         .enter-button {
@@ -139,7 +139,7 @@
             cursor: pointer;
             font-size: 16px;
             transition: background 0.3s ease-in-out;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Great Vibes', cursive;
         }
 
         .back-button:hover {
@@ -233,13 +233,6 @@
             localStorage.clear();
             location.reload();
         }
-
-        window.onload = function () {
-            if (localStorage.getItem("stayOnInvitation")) {
-                document.getElementById("image1").src = localStorage.getItem("image1");
-                document.getElementById("image2").src = localStorage.getItem("image2");
-            }
-        };
     </script>
 
 </body>
