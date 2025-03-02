@@ -29,25 +29,25 @@
             object-fit: cover;
         }
 
-        /* Transparent Input Box - Moved Slightly Higher */
+        /* Transparent Input Box - Moved Slightly Higher & Smaller */
         #inputContainer {
             position: absolute;
-            top: 70%; /* Adjusted higher for better placement */
+            top: 68%; /* Moved slightly higher */
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 15px;
+            gap: 8px;
+            padding: 8px 12px;
             background: rgba(0, 0, 0, 0); /* Fully Transparent */
             border: 2px solid black; /* Black Border */
-            border-radius: 10px;
+            border-radius: 8px;
         }
 
         input {
-            padding: 12px;
-            font-size: 18px;
-            width: 220px;
+            padding: 8px;
+            font-size: 16px;
+            width: 180px; /* Made smaller */
             text-align: center;
             border: none;
             outline: none;
@@ -73,8 +73,8 @@
         }
 
         .enter-button svg {
-            width: 40px;
-            height: 40px;
+            width: 35px; /* Adjusted to match input size */
+            height: 35px;
             fill: white;
         }
 
@@ -121,12 +121,12 @@
         /* Adjustments for Mobile */
         @media (max-width: 600px) {
             input {
-                width: 180px;
+                width: 160px;
             }
 
             .enter-button svg {
-                width: 35px;
-                height: 35px;
+                width: 30px;
+                height: 30px;
             }
 
             img {
