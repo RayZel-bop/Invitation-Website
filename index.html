@@ -59,7 +59,7 @@
             background: transparent;
             color: white;
             font-weight: 600;
-            font-family: 'Montserrat', sans-serif; /* Updated Modern Font */
+            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
@@ -102,6 +102,7 @@
             text-align: center;
             border: 1.5px solid black;
             border-radius: 10px;
+            position: relative;
         }
 
         .image-wrapper {
@@ -110,6 +111,8 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 30px;
+            user-select: none; /* Prevents text selection */
+            pointer-events: none; /* Blocks interactions */
         }
 
         img {
@@ -120,10 +123,8 @@
             border-radius: 8px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease-in-out;
-        }
-
-        img:hover {
-            transform: scale(1.05);
+            user-drag: none;
+            -webkit-user-drag: none;
         }
 
         /* Back to Home Button */
@@ -146,22 +147,6 @@
 
         .back-button:hover {
             background: darkgray;
-        }
-
-        /* Adjustments for Mobile */
-        @media (max-width: 600px) {
-            input {
-                width: 150px;
-            }
-
-            .enter-button svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            img {
-                width: 95%;
-            }
         }
     </style>
 </head>
@@ -196,12 +181,6 @@
     </div>
 
     <script>
-        document.getElementById("inviteCode").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                checkCode();
-            }
-        });
-
         function checkCode() {
             const codes = {
                 "9A26312": [
@@ -212,13 +191,13 @@
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32.jpeg",
                     "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/WhatsApp%20Image%202025-03-01%20at%2016.15.32%20(1).jpeg"
                 ],
-                 "9A26427": [
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/UNDANGAN%209A.JPEG/Ainaya%20Safira%20Husna_26427.jpeg",
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/UNDANGAN%209A.JPEG/Ainaya%20Safira%20Husna_26427%20(2).jpeg"
+                "9A26427": [
+                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/UNDANGAN%209A.JPEG/Ainaya%20Safira%20Husna_26427.jpeg",
+                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/UNDANGAN%209A.JPEG/Ainaya%20Safira%20Husna_26427%20(2).jpeg"
                 ],
-                 "9A26570": [
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/UNDANGAN%209A.JPEG/Alena%20Navara%20Wijayanti_26570.jpeg",
-                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/refs/heads/main/UNDANGAN%209A.JPEG/Alena%20Navara%20Wijayanti_26570%20(2).jpeg"
+                "9A26570": [
+                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/UNDANGAN%209A.JPEG/Alena%20Navara%20Wijayanti_26570.jpeg",
+                    "https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/UNDANGAN%209A.JPEG/Alena%20Navara%20Wijayanti_26570%20(2).jpeg"
                 ]
             };
 
@@ -226,10 +205,6 @@
             if (codes[userCode]) {
                 document.getElementById("image1").src = codes[userCode][0];
                 document.getElementById("image2").src = codes[userCode][1];
-
-                localStorage.setItem("stayOnInvitation", "true");
-                localStorage.setItem("image1", codes[userCode][0]);
-                localStorage.setItem("image2", codes[userCode][1]);
 
                 document.getElementById("inputContainer").style.display = "none";
                 document.getElementById("imageContainer").style.display = "block";
