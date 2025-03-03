@@ -203,18 +203,27 @@
 
             const userCode = document.getElementById("inviteCode").value;
             if (codes[userCode]) {
-                document.getElementById("image1").src = codes[userCode][0];
-                document.getElementById("image2").src = codes[userCode][1];
+                localStorage.setItem("lastCode", userCode);
+                localStorage.setItem("image1", codes[userCode][0]);
+                localStorage.setItem("image2", codes[userCode][1]);
 
-                document.getElementById("inputContainer").style.display = "none";
-                document.getElementById("imageContainer").style.display = "block";
-                document.querySelector(".back-button").style.display = "block";
+                showInvitation();
             } else {
                 alert("Invalid Code. Try Again.");
             }
         }
 
+        function showInvitation() {
+            document.getElementById("image1").src = localStorage.getItem("image1");
+            document.getElementById("image2").src = localStorage.getItem("image2");
+
+            document.getElementById("inputContainer").style.display = "none";
+            document.getElementById("imageContainer").style.display = "block";
+            document.querySelector(".back-button").style.display = "block";
+        }
+
         function goBack() {
+            localStorage.clear();
             location.reload();
         }
     </script>
