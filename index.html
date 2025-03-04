@@ -33,7 +33,7 @@
             object-fit: cover;
         }
 
-        /* Transparent Input Box */
+        /* Smaller Black Border for Input Box */
         #inputContainer {
             position: absolute;
             top: 41.5%;
@@ -41,18 +41,18 @@
             transform: translate(-50%, -50%);
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
+            gap: 5px;
+            padding: 4px 6px; /* Smaller padding to shrink overall size */
             background: rgba(0, 0, 0, 0);
-            border: 1.5px solid black;
-            border-radius: 6px;
+            border: 1px solid black; /* Kept the border thin */
+            border-radius: 4px; /* Slightly smaller rounded corners */
         }
 
         /* Modern Font for "Enter Code" */
         input {
-            padding: 6px;
-            font-size: 18px;
-            width: 180px;
+            padding: 4px; /* Reduced padding inside input */
+            font-size: 16px; /* Slightly smaller text */
+            width: 160px; /* Reduced width */
             text-align: center;
             border: none;
             outline: none;
@@ -82,71 +82,9 @@
         }
 
         .enter-button svg {
-            width: 32px;
-            height: 32px;
+            width: 28px; /* Smaller button */
+            height: 28px;
             fill: white;
-        }
-
-        /* Invitation Page */
-        #imageContainer {
-            display: none;
-            width: 100vw;
-            height: 100vh;
-            overflow-y: auto;
-            padding: 30px;
-            background: url('https://raw.githubusercontent.com/RayZel-bop/Invitation-Website/main/Invitation%20Background.jpeg');
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: black;
-            text-align: center;
-            border: 1.5px solid black;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .image-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        img {
-            width: 90%;
-            max-width: 600px;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease-in-out;
-            user-drag: none;
-            -webkit-user-drag: none;
-        }
-
-        /* Back to Home Button */
-        .back-button {
-            display: none;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            background: black;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s ease-in-out;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .back-button:hover {
-            background: darkgray;
         }
     </style>
 </head>
@@ -167,17 +105,6 @@
                 <path d="M3 12l8-8v6h8v4h-8v6z"/>
             </svg>
         </button>
-    </div>
-
-    <!-- Invitation Page -->
-    <div id="imageContainer">
-        <div class="image-wrapper">
-            <img id="image1" src="" alt="Invitation Image 1">
-        </div>
-        <div class="image-wrapper">
-            <img id="image2" src="" alt="Invitation Image 2">
-        </div>
-        <button class="back-button" onclick="goBack()">Back to Home</button>
     </div>
 
     <script>
@@ -233,16 +160,10 @@
             }
         };
 
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "PrintScreen") {
-                alert("Screenshots are disabled.");
-                return false;
-            }
-        });
-
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                document.getElementById("imageContainer").style.display = "none";
+        // Allow pressing "Enter" to submit the code
+        document.getElementById("inviteCode").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkCode();
             }
         });
     </script>
